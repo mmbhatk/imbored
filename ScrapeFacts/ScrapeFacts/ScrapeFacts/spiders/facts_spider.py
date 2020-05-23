@@ -8,7 +8,6 @@ class FactsSpider(scrapy.Spider):
     name = "facts"
     start_urls = ['https://www.thefactsite.com/1000-interesting-facts/']
     item = ScrapefactsItem()
-    counter = 0
 
     def parse(self, response):
         paragraphs = response.css('p')
@@ -16,8 +15,7 @@ class FactsSpider(scrapy.Spider):
         for paragraph in paragraphs:
             fact = paragraph.css('.list::text').extract()
             if fact:
-                FactsSpider.counter += 1
-                yield {FactsSpider.counter: fact}
+                yield {'fact': fact}
 
         next_page = response.css('.w-full a::attr(href)').get()
         

@@ -8,7 +8,6 @@ class QuotesSpider(scrapy.Spider):
     name = "quotes"
     start_urls = ['https://www.azquotes.com/top_quotes.html']
     item = ScrapequotesItem()
-    counter = 0
 
     def parse(self, response):
         all_quotes = response.css('.wrap-block')
@@ -16,8 +15,7 @@ class QuotesSpider(scrapy.Spider):
         for quote in all_quotes:
             QuotesSpider.item['quote'] = quote.css('.title::text').get()
             QuotesSpider.item['author'] = quote.css('.author a::text').get()
-            QuotesSpider.counter += 1
-            yield {QuotesSpider.counter: QuotesSpider.item}
+            yield {'quote': QuotesSpider.item}
 
         next_page = response.css('li.next a::attr(href)').get()
         
