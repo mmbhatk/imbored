@@ -3,15 +3,18 @@ import sys
 import json
 import random
 import argparse
+import pkg_resources
+
+DATA_PATH = pkg_resources.resource_filename('imbored', 'data/')
 
 def display_fact():
-    with open('data/facts.json') as f:
+    with open(DATA_PATH + 'facts.json') as f:
         data = json.load(f)
         fact_num = random.randint(0, len(data)-1)
         print(data[fact_num]['fact'][0])
 
 def display_quote():
-    with open('data/quotes.json') as f:
+    with open(DATA_PATH + 'quotes.json') as f:
         data = json.load(f)
         quote_num = random.randint(0, len(data)-1)
         print(data[quote_num]['quote']['quote'])
@@ -19,7 +22,7 @@ def display_quote():
 
 def display_joke():
     file_num = random.randint(1, 11)
-    with open('data/jokes_' + str(file_num) + '.json') as f:
+    with open(DATA_PATH + 'jokes_' + str(file_num) + '.json') as f:
         data = json.load(f)
         joke_num = random.randint(0, len(data)-1)
         print(data[joke_num]['joke'])
@@ -31,7 +34,8 @@ def display_random():
     else: display_joke()
 
 def main():
-    print("\nYou could also try: 'imbored fact', 'imbored joke' or 'imbored quote'.\n\n")
+    print("\n\nWelcome to imbored!")
+    print("You could also try: 'imbored fact', 'imbored joke' or 'imbored quote'.\n\n")
 
     if len(sys.argv) == 1 or len(sys.argv) > 2:
         display_random()
@@ -44,6 +48,7 @@ def main():
             display_joke()
         else:
             display_random()
+    print("\n")
 
 if __name__ == "__main__":
     main()
