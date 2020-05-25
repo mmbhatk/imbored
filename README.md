@@ -18,3 +18,12 @@ __f__ or __fact__ &nbsp;&nbsp;&nbsp; Display a fact
 __q__ or __quote__ &nbsp;&nbsp;&nbsp; Display a quote
 
 __j__ or __joke__ &nbsp;&nbsp;&nbsp; Display a joke
+
+
+### Source
+
+Facts: &nbsp;https://www.thefactsite.com/1000-interesting-facts/'
+
+Quotes: &nbsp;https://www.azquotes.com/
+
+Jokes: &nbsp;https://onelinefun.com/
